@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import axios from "axios";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Pressable } from "react-native";
 const clickHandler = (num) => {
   console.log(num);
   // return axios.post("http://localhost:3000/val", {
@@ -16,27 +16,15 @@ const clickHandler = (num) => {
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.btn}>
-        <Button
-          title="circle"
-          onPress={() => clickHandler("0")}
-          color="#ffffff"
-        />
-      </View>
-      <View style={styles.btn}>
-        <Button
-          title="square"
-          onPress={() => clickHandler("1")}
-          color="#ffffff"
-        />
-      </View>
-      <View style={styles.btn}>
-        <Button
-          title="rectangle"
-          onPress={() => clickHandler("2")}
-          color="#ffffff"
-        />
-      </View>
+      <Pressable style={styles.btn} onPress={() => clickHandler("0")}>
+        <Text style={styles.text}>Cirgle</Text>
+      </Pressable>
+      <Pressable style={styles.btn} onPress={() => clickHandler("1")}>
+        <Text style={styles.text}>Rectangle</Text>
+      </Pressable>
+      <Pressable style={styles.btn} onPress={() => clickHandler("2")}>
+        <Text style={styles.text}>Square</Text>
+      </Pressable>
     </View>
   );
 }
@@ -49,9 +37,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   btn: {
-    backgroundColor: "red",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
     margin: 15,
-    borderRadius: 15,
-    width: 150,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: "black",
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "white",
   },
 });
